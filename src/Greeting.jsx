@@ -1,4 +1,5 @@
-const Greeting = () => {
+//Modifying Greeting to accept a prop called username
+const Greeting = ({ username }) => {
   const currentDate = new Date().toLocaleDateString();
 
   const paragraphStyle = {
@@ -8,9 +9,9 @@ const Greeting = () => {
 
   return (
     <div>
-      <h1>Hello World!</h1>
-        <h1> Welcome To My First Ever React!</h1>
-      <p style={paragraphStyle}>Today's date is:  {currentDate}.</p>
+      {/* Display the username prop inside the message */}
+      <h1>Hello, {username}! Welcome to React!</h1>
+      <p style={paragraphStyle}>Today's date is {currentDate}.</p>
     </div>
   );
 };

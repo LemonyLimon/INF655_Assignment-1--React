@@ -1,16 +1,18 @@
 import Greeting from './Greeting';
 import UserInfo from './UserInfo';
+import Counter from './Counter';
+import TaskForm from './TaskForm';
 
 function App() {
-//Creating an array of tasks to randomly select from
-  const tasks = ["Sing Off Key", "Walk Ori", "Practice React", "Plan Next Getaway", "Read a Book", "Mediate"];
-  const getRandomTask = () => {
-    const randomIndex = Math.floor(Math.random() * tasks.length);
-    return tasks[randomIndex];
+  // Task 3: Array of 5 tasks for the list
+  const taskList = ["Sing Off Key", "Walk Ori", "Practice React", "Plan Next Getaway", "Read a Book"];
+
+  // Task 4: Function to show an alert
+  const handleAlert = () => {
+    alert("Hello from Melanie's React App!");
   };
 
   return (
-   //Styling the main container, centering the content and adding a background color
     <div style={{ 
       display: 'flex', 
       flexDirection: 'column', 
@@ -20,14 +22,30 @@ function App() {
       minHeight: '100vh',
       width: '100vw',
       padding: '20px' ,
-      backgroundColor: '#3cb371'//green background color
+      backgroundColor: '#3cb371'
     }}>
-      {/*Rendering child components */}
-      <Greeting />
-      <UserInfo />
+      {/*Rendering Greeting twice with different usernames */}
+      <Greeting username="Margaret Owen" />
+      <Greeting username="Samantha Sotto Yambao" />
       
-      {/* Displaying the random task */}
-      <h3>Random Task for Today: {getRandomTask()}</h3>
+      {/* Render the Counter component */}
+      <Counter />
+
+      {/*Display a list of tasks using .map() and unique keys */}
+      <div style={{ margin: '20px' }}>
+        <h3>My Weekly Tasks:</h3>
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          {taskList.map((task, index) => (
+            <li key={index}>- {task}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Passing the handleAlert function as a prop to UserInfo */}
+      <UserInfo handleClick={handleAlert} />
+
+      {/* Rendering the TaskForm component */}
+      <TaskForm />
     </div>
   );
 }
